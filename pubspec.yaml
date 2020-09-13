@@ -21,6 +21,10 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+  slide_countdown_clock: ^1.0.3
+  cloud_firestore: ^0.14.0+2
+  animated_floatactionbuttons: ^0.1.0
+  http: ^0.12.2
   firebase_core:
   firebase_auth:
   flip_card: ^0.4.4

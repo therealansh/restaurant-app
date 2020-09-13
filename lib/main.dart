@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_app/screens/sign_in.dart';
 import 'package:restaurant_app/services/authService.dart';
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
         fontFamily: "Poppins",
         scaffoldBackgroundColor: Color(0xFFFFFFFF),
         primaryColor: Color(0xFFFB475F),
-        textTheme:TextTheme(
+        textTheme: TextTheme(
           bodyText1: TextStyle(color: Color(0xFF1D150B)),
         ),
       ),
@@ -24,4 +25,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
