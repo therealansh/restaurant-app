@@ -59,11 +59,11 @@ class _DetailScreen extends State<DetailScreen> {
                     Text(
                       widget.food.name,
                       style:
-                          TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
                     ),
                     Text("₹${widget.food.price}",
                         style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24)),
+                            fontWeight: FontWeight.bold, fontSize: 20)),
                   ],
                 ),
                 SizedBox(
@@ -73,7 +73,7 @@ class _DetailScreen extends State<DetailScreen> {
                 //Description
                 Text(
                   widget.food.toppings,
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(fontSize: 18),
                 ),
                 Spacer(),
                 Padding(
