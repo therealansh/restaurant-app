@@ -8,7 +8,7 @@ class AuthService {
   handleAuth() {
     return StreamBuilder(
       stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, snap) {
+      builder: (context, AsyncSnapshot<dynamic> snap) {
         if (snap.hasData) {
           return HomePage(
             phone: phone,

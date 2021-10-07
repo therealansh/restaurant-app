@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:restaurant_app/screens/phone_auth_screen.dart';
 import 'package:restaurant_app/services/authService.dart';
 import 'package:restaurant_app/widgets/round_button.dart';
 
@@ -16,7 +15,9 @@ class _SignIn extends State<SignIn> {
         height: double.infinity,
         decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage("assets/images/bg.png"), fit: BoxFit.fill),
+            image: AssetImage("assets/images/bg.png"),
+            fit: BoxFit.fill,
+          ),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -27,10 +28,15 @@ class _SignIn extends State<SignIn> {
                   style: TextStyle(fontSize: 34, color: Color(0xFF1D150B)),
                   children: [
                     TextSpan(
-                        text: "pizza",
-                        style: TextStyle(fontStyle: FontStyle.italic)),
+                      text: "pizza",
+                      style: TextStyle(fontStyle: FontStyle.italic),
+                    ),
                     TextSpan(
-                        text: "GO", style: TextStyle(color: Color(0xFFff9eb6)))
+                      text: "GO",
+                      style: TextStyle(
+                        color: Color(0xFFff9eb6),
+                      ),
+                    )
                   ]),
             ),
             RoundedButton(

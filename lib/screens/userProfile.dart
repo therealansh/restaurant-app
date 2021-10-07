@@ -55,7 +55,11 @@ class _UserProfile extends State<UserProfile> {
                 width: 250,
                 height: 250,
                 decoration: BoxDecoration(
-                    shape: BoxShape.circle, color: Color(0xFFff9eb6)),
+                  shape: BoxShape.circle,
+                  color: Color(
+                    0xFFff9eb6,
+                  ),
+                ),
               ),
               Positioned(
                   bottom: 20,
@@ -66,7 +70,9 @@ class _UserProfile extends State<UserProfile> {
                       child: CircleAvatar(
                         child: Text(
                           "🍕",
-                          style: TextStyle(fontSize: 35),
+                          style: TextStyle(
+                            fontSize: 35,
+                          ),
                         ),
                         radius: 30,
                         backgroundColor: Colors.white,

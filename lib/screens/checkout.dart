@@ -28,8 +28,9 @@ class _Checkout extends State<Checkout> {
       body: StreamBuilder(
         stream: bloc.getStream,
         initialData: bloc.allItems,
-        builder: (context, snap) {
-          return snap.data['cartItems'].length > 0
+        builder: (context, AsyncSnapshot<dynamic> snap) {
+          var data = snap.data['cartItems'];
+          return data.length > 0
               ? Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -38,7 +39,7 @@ class _Checkout extends State<Checkout> {
                       ),
                       Expanded(
                         child: ListView.builder(
-                            itemCount: snap.data['cartItems'].length,
+                            itemCount: data.length,
                             itemBuilder: (context, index) {
                               return Padding(
                                   padding: EdgeInsets.symmetric(
@@ -64,8 +65,7 @@ class _Checkout extends State<Checkout> {
                                           ],
                                         ),
                                       ),
-                                      key: Key(
-                                          snap.data['cartItems'].toString()),
+                                      key: Key(data.toString()),
                                       onDismissed: (direction) {
                                         _scaffState.currentState
                                             .showSnackBar(SnackBar(
@@ -73,7 +73,8 @@ class _Checkout extends State<Checkout> {
                                         ));
                                         setState(() {
                                           bloc.removeFromCart(
-                                              snap.data["cartItems"][index]);
+                                            data[index],
+                                          );
                                         });
                                       },
                                       child: ListTile(
@@ -83,25 +84,23 @@ class _Checkout extends State<Checkout> {
                                               MaterialPageRoute(
                                                   builder: (context) =>
                                                       DetailScreen(
-                                                        food: snap.data[
-                                                            'cartItems'][index],
+                                                        food: data[index],
                                                       )));
                                         },
                                         title: Text(
-                                          snap.data['cartItems'][index].name,
+                                          data[index].name,
                                           style: TextStyle(fontSize: 20),
                                         ),
                                         leading: CircleAvatar(
-                                          backgroundImage: NetworkImage(snap
-                                              .data['cartItems'][index]
-                                              .imageURL),
+                                          backgroundImage: NetworkImage(
+                                              data[index].imageURL),
                                           radius: 40,
                                           backgroundColor: Theme.of(context)
                                               .primaryColor
                                               .withOpacity(0.2),
                                         ),
                                         trailing: Text(
-                                          "₹${snap.data["cartItems"][index].price}",
+                                          "₹${data[index].price}",
                                           style: TextStyle(
                                               fontSize: 15,
                                               fontWeight: FontWeight.bold),

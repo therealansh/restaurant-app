@@ -76,7 +76,7 @@ class _HomePage extends State<HomePage> {
   //get current user or create a user if doesnt exist
   getUser() async {
     String uid = await FirebaseAuth.instance.currentUser.uid;
-    final res = await http.get("http://localhost:8080/users/${uid}");
+    final res = await http.get("http://localhost:8080/users/$uid");
     if (res.statusCode == 200) {
       var parsedJson = json.decode(res.body);
       if (json.decode(res.body).length != 0) {
@@ -143,13 +143,12 @@ class _HomePage extends State<HomePage> {
         onWillPop: () async => false,
         child: FutureBuilder(
             future: userFetch,
-            builder: (context, snap) {
+            builder: (context, AsyncSnapshot<dynamic> snap) {
               if (!snap.hasData ||
                   snap.connectionState != ConnectionState.done) {
                 return Scaffold(
                     body: Center(child: CircularProgressIndicator()));
-              }
-              if (snap.connectionState == ConnectionState.done) {
+              } else if (snap.connectionState == ConnectionState.done) {
                 return Scaffold(
                   key: _scaffkey,
                   endDrawer: Drawer(
@@ -160,18 +159,19 @@ class _HomePage extends State<HomePage> {
                           child: Center(
                             child: RichText(
                               text: TextSpan(
-                                  style: TextStyle(
-                                      fontSize: 26, color: Color(0xFF1D150B)),
-                                  children: [
-                                    TextSpan(
-                                        text: "pizza",
-                                        style: TextStyle(
-                                            fontStyle: FontStyle.italic)),
-                                    TextSpan(
-                                        text: "GO",
-                                        style:
-                                            TextStyle(color: Color(0xFFff9eb6)))
-                                  ]),
+                                style: TextStyle(
+                                    fontSize: 26, color: Color(0xFF1D150B)),
+                                children: [
+                                  TextSpan(
+                                      text: "pizza",
+                                      style: TextStyle(
+                                          fontStyle: FontStyle.italic)),
+                                  TextSpan(
+                                      text: "GO",
+                                      style:
+                                          TextStyle(color: Color(0xFFff9eb6)))
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -198,7 +198,9 @@ class _HomePage extends State<HomePage> {
                         ListTile(
                           onTap: () {},
                           title: Text("Contact Us"),
-                          leading: Icon(Icons.help),
+                          leading: Icon(
+                            Icons.help,
+                          ),
                         ),
                         ListTile(
                           onTap: () {},

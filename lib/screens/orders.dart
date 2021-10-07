@@ -14,6 +14,7 @@ class _Orders extends State<Orders> {
     return Scaffold(
       appBar: AppBar(
         title: Text("🚚Previous Orders"),
+        centerTitle: true,
       ),
       body: Center(
         child: Text("Wasn't it amazing?"),

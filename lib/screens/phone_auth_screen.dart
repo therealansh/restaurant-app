@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
@@ -45,12 +43,13 @@ class _PhoneAuthState extends State<PhoneAuth> {
       this.verificationId = verId;
     };
     await FirebaseAuth.instance.verifyPhoneNumber(
-        phoneNumber: phone,
-        timeout: const Duration(seconds: 5),
-        verificationCompleted: verified,
-        verificationFailed: verfFailed,
-        codeSent: smsSent,
-        codeAutoRetrievalTimeout: autoTimeout);
+      phoneNumber: phone,
+      timeout: const Duration(seconds: 5),
+      verificationCompleted: verified,
+      verificationFailed: verfFailed,
+      codeSent: smsSent,
+      codeAutoRetrievalTimeout: autoTimeout,
+    );
   }
 
   successAuth() {
@@ -71,8 +70,9 @@ class _PhoneAuthState extends State<PhoneAuth> {
           height: 300,
           width: 300,
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Theme.of(context).primaryColor),
+            borderRadius: BorderRadius.circular(20),
+            color: Theme.of(context).primaryColor,
+          ),
           child: ListView(
             children: <Widget>[
               Column(
@@ -83,7 +83,9 @@ class _PhoneAuthState extends State<PhoneAuth> {
                     child: Text(
                       "Enter Phone Number",
                       style: TextStyle(
-                          fontSize: 25.0, fontWeight: FontWeight.w700),
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
                   Form(
@@ -92,13 +94,20 @@ class _PhoneAuthState extends State<PhoneAuth> {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(
-                              top: 10.0, left: 25.0, right: 25.0),
+                            top: 10.0,
+                            left: 25.0,
+                            right: 25.0,
+                          ),
                           child: TextFormField(
                             onChanged: (val) {
-                              setState(() {
-                                phoneNumber = "+91" + val;
-                                phone = int.parse("+91" + val);
-                              });
+                              setState(
+                                () {
+                                  phoneNumber = "+91" + val;
+                                  phone = int.parse(
+                                    "+91" + val,
+                                  );
+                                },
+                              );
                             },
                             validator: (value) => (value.length == 10
                                 ? "Please Enter valid phone number"
@@ -107,8 +116,9 @@ class _PhoneAuthState extends State<PhoneAuth> {
                             decoration: InputDecoration(
                               labelText: "Phone Number",
                               labelStyle: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black),
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
                               prefix: Padding(
                                   padding: EdgeInsets.only(right: 5.0),
                                   child: Text(
@@ -126,8 +136,13 @@ class _PhoneAuthState extends State<PhoneAuth> {
 //                                    borderSide:
 //                                    BorderSide(color: Color(0xFFa1a1a1))),
                               errorBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.red)),
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
                               fillColor: Theme.of(context).primaryColor,
                               filled: true,
                             ),
@@ -180,7 +195,10 @@ class _PhoneAuthState extends State<PhoneAuth> {
                       children: <Widget>[
                         Padding(
                           padding: EdgeInsets.only(
-                              top: 10.0, left: 25.0, right: 25.0),
+                            top: 10.0,
+                            left: 25.0,
+                            right: 25.0,
+                          ),
                           child: TextFormField(
                             onChanged: (val) {
                               setState(() {
@@ -194,19 +212,29 @@ class _PhoneAuthState extends State<PhoneAuth> {
                             decoration: InputDecoration(
                               labelText: "Verification Code",
                               labelStyle: TextStyle(
-                                  fontWeight: FontWeight.w700,
-                                  color: Colors.black),
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black,
+                              ),
                               enabledBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(10),
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
                               ),
 //                                    borderSide:
 //                                    BorderSide(color: Color(0xFFa1a1a1))),
                               errorBorder: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(10),
-                                  borderSide: BorderSide(color: Colors.red)),
+                                borderRadius: BorderRadius.circular(
+                                  10,
+                                ),
+                                borderSide: BorderSide(
+                                  color: Colors.red,
+                                ),
+                              ),
                               fillColor: Theme.of(context).primaryColor,
                               filled: true,
                             ),
@@ -224,18 +252,25 @@ class _PhoneAuthState extends State<PhoneAuth> {
                             child: Text(
                               "Go Back",
                               textAlign: TextAlign.right,
-                              style: TextStyle(fontStyle: FontStyle.italic),
+                              style: TextStyle(
+                                fontStyle: FontStyle.italic,
+                                color: Colors.black,
+                              ),
                             ),
                             onTap: () => cardKey.currentState.toggleCard(),
                           ),
-                          padding:
-                              EdgeInsets.only(right: 30, top: 10, bottom: 10),
+                          padding: EdgeInsets.only(
+                            right: 30,
+                            top: 10,
+                            bottom: 10,
+                          ),
                         ),
                         RoundedButton(
-                            text: "Verify",
-                            onClick: () {
-                              successAuth();
-                            })
+                          text: "Verify",
+                          onClick: () {
+                            successAuth();
+                          },
+                        )
                       ],
                     ),
                   ),
