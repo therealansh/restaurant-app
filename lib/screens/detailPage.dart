@@ -20,7 +20,11 @@ class _DetailScreen extends State<DetailScreen> {
         return Scaffold(
           key: _scaffoldKey,
           body: Padding(
-            padding: EdgeInsets.only(left: 20, right: 20, top: 50),
+            padding: EdgeInsets.only(
+              left: 20,
+              right: 20,
+              top: 50,
+            ),
             child: Column(
               children: [
                 Row(
@@ -30,7 +34,9 @@ class _DetailScreen extends State<DetailScreen> {
                       onPressed: () {
                         Navigator.pop(context);
                       },
-                      icon: Icon(Icons.arrow_back_ios),
+                      icon: Icon(
+                        Icons.arrow_back_ios,
+                      ),
                     )
                   ],
                 ),
@@ -61,9 +67,11 @@ class _DetailScreen extends State<DetailScreen> {
                       style:
                           TextStyle(fontWeight: FontWeight.bold, fontSize: 36),
                     ),
-                    Text("₹${widget.food.price}",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold, fontSize: 24)),
+                    Text(
+                      "₹${widget.food.price}",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 24),
+                    ),
                   ],
                 ),
                 SizedBox(
@@ -92,10 +100,10 @@ class _DetailScreen extends State<DetailScreen> {
                           padding: EdgeInsets.symmetric(
                               vertical: 20, horizontal: 25),
                           decoration: BoxDecoration(
-                              color: Theme.of(context)
-                                  .primaryColor
-                                  .withOpacity(0.4),
-                              borderRadius: BorderRadius.circular(20)),
+                            color:
+                                Theme.of(context).primaryColor.withOpacity(0.4),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
                           child: Row(
                             children: [
                               Text(
@@ -105,7 +113,9 @@ class _DetailScreen extends State<DetailScreen> {
                               SizedBox(
                                 width: 30,
                               ),
-                              Icon(Icons.add_shopping_cart),
+                              Icon(
+                                Icons.add_shopping_cart,
+                              ),
                             ],
                           ),
                         ),
@@ -121,25 +131,28 @@ class _DetailScreen extends State<DetailScreen> {
                           alignment: Alignment.center,
                           children: [
                             Container(
-                                padding: EdgeInsets.all(15),
-                                height: 60,
-                                width: 60,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: Theme.of(context).primaryColor,
+                              padding: EdgeInsets.all(15),
+                              height: 60,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: Theme.of(context).primaryColor,
+                              ),
+                              child: Align(
+                                alignment: Alignment.center,
+                                child: GestureDetector(
+                                  child: Icon(Icons.add_shopping_cart),
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => Checkout(),
+                                      ),
+                                    );
+                                  },
                                 ),
-                                child: Align(
-                                    alignment: Alignment.center,
-                                    child: GestureDetector(
-                                      child: Icon(Icons.add_shopping_cart),
-                                      onTap: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Checkout()));
-                                      },
-                                    ))),
+                              ),
+                            ),
                           ],
                         ),
                       )

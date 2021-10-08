@@ -9,17 +9,25 @@ class CartItems {
 
   void addToCart(item) {
     allItems['cartItems'].add(item);
-    cartStreamController.sink.add(allItems);
+    cartStreamController.sink.add(
+      allItems,
+    );
   }
 
   void removeFromCart(item) {
-    allItems['cartItems'].remove(item);
-    cartStreamController.sink.add(allItems);
+    allItems['cartItems'].remove(
+      item,
+    );
+    cartStreamController.sink.add(
+      allItems,
+    );
   }
 
   void clearCart() {
     allItems['cartItems'].clear();
-    cartStreamController.sink.add(allItems);
+    cartStreamController.sink.add(
+      allItems,
+    );
   }
 
   void dispose() {
